@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const User = require("./models/User");
 const { UserController } = require("./controller/userCtrl");
+const { departmentRouter } = require('./routers/department');
 
 app.use(express.json())
 
@@ -131,6 +132,9 @@ app.patch("/api/order/:id",async(req,res) => {
 app.post("/api/users",(req,res) => {
     res.redirect(307,"/api/user")
 })
+
+
+app.use("/", departmentRouter);
 
 
 
